@@ -35,6 +35,8 @@ pub async fn App() -> Element {
     }
 }
 
+pub fn something() {}
+
 #[component]
 fn TaskView(id: u32, name: String) -> Element {
     rsx! {
