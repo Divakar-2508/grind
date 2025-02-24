@@ -1,0 +1,20 @@
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS Tasks(
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  done BOOLEAN DEFAULT FALSE,
+  command TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Admin(
+  name TEXT DEFAULT 'root',
+  last_login DATE,
+  streaks INTEGER DEFAULT 0
+);
+
+INSERT INTO Admin(name, last_login, streak)
+SELECT 'root', DATE(), 0
+WHERE NOT EXISTS(SELECT 1 FROM Admin);
+
+COMMIT;
